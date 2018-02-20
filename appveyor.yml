@@ -11,7 +11,7 @@ configuration: Release
 platform: x64
 
 init: 
-  - set PATH=%PATH%
+  - set PATH=C:\Program Files\Git\mingw64\bin;%PATH%
 
 install:
   - ps: Get-NodeJsLatestBuild 8.4
@@ -21,6 +21,6 @@ install:
   - npm install npm@latest
   - npm install --save three three.ar.js
 
-build: on
+build: off
 
 test: off
