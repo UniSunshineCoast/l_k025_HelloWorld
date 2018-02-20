@@ -31,7 +31,6 @@
   "homepage": "https://github.com/UniSunshineCoast/l_k025_HelloWorld#readme",
   "dependencies": {
     "three": "^0.90.0",
-    "three-vrcontrols": "^1.0.0",
     "three.ar.js": "^0.1.7"
   }
 }
