@@ -1,3 +1,17 @@
 version: 1.0.{build}
-build:
-  verbosity: minimal
+
+branches:
+  only:
+  - master
+
+install:
+  - ps: Get-NodeJsLatestBuild 8.4
+  - ps: Install-Product node 8.4.0 x64
+  - node -v
+  - cd %APPVEYOR_BUILD_FOLDER%
+  - npm install npm@latest
+  - npm install --save three three.ar.js
+
+build: off
+
+test: off
