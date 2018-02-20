@@ -13,8 +13,12 @@ function init(display) {
 
   // Set up our ARView with ARPerspectiveCamera
   arView = new THREE.ARView(vrDisplay, renderer);
-  camera = new THREE.ARPerspectiveCamera(vrDisplay, 60, window.innerWidth / window.innerHeight, vrDisplay.depthNear, vrDisplay.depthFar);
-  vrControls = new THREE.VRControls(camera);
+  if (vrDisplay === null) {
+    console.log(this, "\nThere is no vrDisplay");
+  } else {
+    camera = new THREE.ARPerspectiveCamera(vrDisplay, 60, window.innerWidth / window.innerHeight, vrDisplay.depthNear, vrDisplay.depthFar);
+    vrControls = new THREE.VRControls(camera);
+  }
 
   update();
 }
@@ -22,9 +26,14 @@ function init(display) {
 function update() {
   // Update our controls/camera, the ARView rendering,
   // and our three.js scene
-  vrControls.update();
+  if (vrDisplay === null) {
+    console.log(this, "\nCannot update, there is no vrDisplay");
+  } else {
+    vrControls.update();
   arView.render();
   renderer.clearDepth();
   renderer.render(scene, camera);
   vrDisplay.requestAnimationFrame(update);
+  }
+  
 }
