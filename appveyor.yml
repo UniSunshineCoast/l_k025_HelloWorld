@@ -11,9 +11,12 @@ configuration: Release
 platform: x64
 
 init: 
+  - echo "init statrted"
   - set PATH=C:\Program Files\Git\mingw64\bin;%PATH%
 
+
 install:
+  - echo "installed started"
   - ps: Get-NodeJsLatestBuild 8.4
   - ps: Install-Product node 8.4.0 x64
   - node -v
