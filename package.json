@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/UniSunshineCoast/l_k025_HelloWorld#readme",
   "dependencies": {
+    "live-server": "^1.2.0",
     "three": "^0.90.0",
     "three.ar.js": "^0.1.7"
   }

@@ -14,21 +14,13 @@ function init(display) {
   // Set up our ARView with ARPerspectiveCamera
   arView = new THREE.ARView(vrDisplay, renderer);
   if (vrDisplay === null) {
-    console.log("Cannot add AR camera, there is no vrDisplay\n", this);
-    var d = document.createElement("div");
-    var t = document.createTextNode("This device has no vrDisplay.");
-    d.appendChild(t);
-    var c = document.getElementById("div1");
-    document.body.insertBefore(d, c)
-    d.style.fontSize = "40px";
-    d.style.fontWeight = "bold";
-    c.style.display = "none";
+    this.noVRDisplay();
   } else {
     camera = new THREE.ARPerspectiveCamera(vrDisplay, 60, window.innerWidth / window.innerHeight, vrDisplay.depthNear, vrDisplay.depthFar);
     vrControls = new THREE.VRControls(camera);
+  
+    update();
   }
-
-  update();
 }
 
 function update() {
@@ -44,4 +36,16 @@ function update() {
   vrDisplay.requestAnimationFrame(update);
   }
   
+}
+
+function noVRDisplay() {
+  console.log("Cannot add AR camera, there is no vrDisplay\n", this);
+  var d = document.createElement("div");
+  var t = document.createTextNode("This device has no vrDisplay.");
+  d.appendChild(t);
+  var c = document.getElementById("div1");
+  document.body.insertBefore(d, c)
+  d.style.fontSize = "40px";
+  d.style.fontWeight = "bold";
+  c.style.display = "none";
 }
